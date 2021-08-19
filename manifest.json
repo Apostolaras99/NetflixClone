@@ -1,6 +1,6 @@
 {
-    "short_name": "Weather",
-    "name": "Weather: Do I need an umbrella?",
+    "short_name": "NetflixClone",
+    "name": "NetflixClone",
     "icons": [
       {
         "src": "ico.ico",
@@ -14,10 +14,10 @@
         "sizes": "512x512"
       }
     ],
-    "start_url": "/",
+    "start_url": "/NetflixClone",
     "background_color": "#000000",
     "display": "standalone",
-    "scope": "/",
+    "scope": "/NetflixClone",
     "theme_color": "#000000",
-    "description": "Weather forecast information"
+    "description": "NetflixClone"
   }
