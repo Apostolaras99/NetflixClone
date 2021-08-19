@@ -6,7 +6,7 @@ var urlsToCache = [
 '/Netflix.html'
 ];
 
-self.addEventListener('install', function(event) {
+
 // Perform install steps
 event.waitUntil(
     caches.open(CACHE_NAME)
@@ -16,7 +16,7 @@ event.waitUntil(
     })
 );
 });
-});
+
 
 self.addEventListener('fetch', function(event) {
 event.respondWith(
