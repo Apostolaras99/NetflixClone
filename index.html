@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="el-GR">
+<head>
+<title>Netflix</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Put your description here.">
+<meta name="theme-color" content="#000000"/>
+<link rel="apple-touch-icon" href="ico.ico">
+<link rel="manifest" href="manifest.json">
+<link rel = "icon" href = "ico.ico" type = "image/ico">
+<!--<script src="sw.js"></script>-->
+<style>
+    body{
+        margin: 0;
+        background: #000000;
+        font-family: Verdana, sans-serif;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        user-select: none;
+    }
+    header{
+        padding: 1em 3em;
+        position: sticky;
+        top: 0;
+        background: linear-gradient(to bottom,rgb(0 0 0 / 60%) 15% ,rgba(0,0,0,0));
+        z-index: 3;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    header section{
+        display: flex;
+        margin: 0;
+        align-items: center;
+    }
+    a{
+        color: #ffffff;
+        text-decoration: none;
+        margin: 0.5em;
+        transition-duration: 300ms;
+        text-shadow: 0 0 1em black;
+    }
+    a:hover{
+        color: #ffffffb3;
+    }
+    div.show{
+        height: -webkit-fill-available;
+        width: -webkit-fill-available;
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 10em 3em;
+    }
+    img.show{
+        height: -webkit-fill-available;
+        width: -webkit-fill-available;
+        position: absolute;
+        top: 0;
+        object-fit: cover;
+        object-position: 80%;
+        z-index: -1;
+        -webkit-mask-image: -webkit-gradient(linear, right top,  right bottom,  from(rgb(0 0 0)), to(rgb(0 0 0 / 0%)));
+    }
+    img.boxart{
+        width: 100%;
+        height: auto;
+        border-radius: 0.25em;
+        transition: all 300ms ease-in-out;
+        z-index: 0;
+    } 
+    img.left{
+        transform-origin: 0;
+    }
+    img.right{
+        transform-origin: 100%;
+    }
+    img.boxart:hover{
+        z-index: 2;
+        cursor: pointer;
+        transition-delay:300ms;
+        transform: scale(1.25);
+    }
+    section{
+        margin: 0 3em 1em 3em;
+        display: inline-block;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(18em,1fr));
+        grid-gap: 0.5em;
+    }
+    h2{
+        cursor: pointer;
+        transition-duration: 300ms;
+        transform-origin: 0;
+        max-width: max-content;
+        margin-left: 2em;
+    }
+    h2:hover{
+        transform: scale(1.25);
+    }
+    ::-webkit-scrollbar {
+        width: 0.5em;
+    }   
+    ::-webkit-scrollbar-track {
+        background: #000000; 
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #404040; 
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #808080; 
+        width: 1em;
+    }
+    div{
+        display: flex;
+    }
+    img.title-logo{
+        width: 35vw;
+        height: auto;
+        filter: drop-shadow(2px 4px 6px black);
+    }
+    a.playLink{
+        background-color: #ffffff;
+        color: #000000;
+        font-size: 1.5em;
+        font-weight: 600;
+        border-radius: 0.25em;
+        padding: 0.5em 1em;
+        box-shadow: 0 0 1em black;
+        margin:0;
+        transition-duration: 300ms;
+        text-shadow: none;
+    }
+    a.info{
+        margin:0;
+        background-color: #000000;
+        color: #ffffff;
+        font-size: 1.5em;
+        font-weight: 600;
+        border-radius: 0.25em;
+        padding: 0.5em 1em;
+        box-shadow: 0 0 1em black;
+        transition-duration: 300ms;
+        margin-left: 1em;
+        text-shadow: none;
+    }
+    a.info:hover{
+        background-color: #ffffff;
+        color: #000000;
+    }
+    a.playLink:hover{
+        background-color: #000000;
+        color: #ffffff;
+    }
+    footer{
+        margin: auto;
+        width: 100%;
+        max-width: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    footer a{
+        margin: 1em;
+    }
+</style>
+</head>
+<body>
+<header>   
+    <section>
+        <a href="#" style="margin: 0;margin-top: 0.25em;margin-right: 3em;" aria-label="Netflix"><img width="596" height="162" loading="lazy" alt="" src="logo.png" style="height: 1.5em; width: auto; filter: drop-shadow(2px 4px 6px black);"></a><a href="#">Αρχική</a><a href="#">Τηλεοπτικές σειρές</a><a href="#">Ταινίες</a><a href="#">Νέα και δημοφιλή</a><a href="#">Η λίστα μου</a>
+    </section>
+    <section>
+        <a href="#" style="float:right;">&#9740;</a><a href="#" style="float:right;">ΠΑΙΔΙΚΑ</a><a href="#" style="float:right;">&#x2617;</a>
+    </section>
+</header>
+<img width="1280" height="720" loading="lazy" alt="" class="show" src="img7.webp">
+<div class="show">
+<img width="650" height="260" loading="lazy" alt="" class="title-logo" src="img7-1.webp">
+<h1 style="text-shadow: 0 0 1em black;"></h1>
+<p style="font-size:1.5em; width:35vw; font-weight: 400;text-shadow: 0 0 1em black; margin-top: 0;">Κοκαΐνη. Χρήματα. Εξουσία. Τα καρτέλ της Κολομβίας τα θέλουν όλα. Ο πόλεμος των βαρόνων των ναρκωτικών μόλις ξεκίνησε.</p>
+<div class="links">
+    <a class="playLink" href="/watch.html">&#10148; Προβολή</a>
+    <a class="info" href="/">&#8505; Περισσότερες πληροφορίες</a>
+</div>
+</div>
+<h2 style="margin-top: 70vh; ">Δημοφιλή στο Netflix</h2>
+<section >
+    <img width="341" height="192" loading="lazy" alt="" class="boxart left" src="1.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="2.webp">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="3.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="4.webp">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="5.webp">
+    <img width="341" height="192" loading="lazy" alt="" class="boxart right" src="6.webp">
+</section>
+<h2>Συνεχίστε να βλέπετε με το προφίλ Αποστόλης</h2>
+<section>
+    <img width="341" height="192" loading="lazy" alt="" class="boxart left" src="7.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="8.webp">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="9.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="10.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="11.webp">
+    <img width="341" height="192" loading="lazy" alt="" class="boxart right" src="12.jpg">
+</section>
+<h2>Δημοφιλή τώρα</h2>
+<section>
+    <img width="341" height="192" loading="lazy" alt="" class="boxart left" src="13.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="14.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="15.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="16.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="17.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class="boxart right" src="18.jpg">
+</section>
+<h2>Χαλαρωτικές προβολές</h2>
+<section>
+    <img width="341" height="192" loading="lazy" alt="" class="boxart left" src="19.webp">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="20.webp">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="21.webp">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="22.webp">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="23.webp">
+    <img width="341" height="192" loading="lazy" alt="" class="boxart right" src="24.webp">
+</section>
+<h2>Μπες στη δράση</h2>
+<section>
+    <img width="341" height="192" loading="lazy" alt="" class="boxart left" src="25.webp">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="26.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="27.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="28.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="29.webp">
+    <img width="341" height="192" loading="lazy" alt="" class="boxart right" src="30.webp">
+</section>
+<h2>Πρωτότυπο περιεχόμενο του Netflix</h2>
+<section>
+    <img width="342" height="684" loading="lazy" alt="" class="boxart left" src="31.webp">
+    <img width="342" height="684" loading="lazy" alt="" class=boxart src="32.webp">
+    <img width="342" height="684" loading="lazy" alt="" class=boxart src="33.webp">
+    <img width="342" height="684" loading="lazy" alt="" class=boxart src="34.webp">
+    <img width="342" height="684" loading="lazy" alt="" class=boxart src="35.webp">
+    <img width="342" height="684" loading="lazy" alt="" class="boxart right" src="36.webp">
+</section>
+<h2>Μπες στη δράση</h2>
+<section>
+    <img width="341" height="192" loading="lazy" alt="" class="boxart left" src="25.webp">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="26.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="27.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="28.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="29.webp">
+    <img width="341" height="192" loading="lazy" alt="" class="boxart right" src="30.webp">
+</section>
+<h2>Μπες στη δράση</h2>
+<section>
+    <img width="341" height="192" loading="lazy" alt="" class="boxart left" src="25.webp">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="26.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="27.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="28.jpg">
+    <img width="341" height="192" loading="lazy" alt="" class=boxart src="29.webp">
+    <img width="341" height="192" loading="lazy" alt="" class="boxart right" src="30.webp">
+</section>
+<footer>
+    <a href="#">Ήχος και υπότιτλοι</a>
+    <a href="#">Ηχητική περιγραφή</a>
+    <a href="#">Κέντρο βοήθειας</a>
+    <a href="#">Δωροκάρτες</a>
+    <a href="#">Κέντρο ενημέρωσης</a>
+    <a href="#">Επενδυτικές σχέσεις</a>
+    <a href="#">Θέσεις εργασίας</a>
+    <a href="#">Όροι Χρήσης</a>
+    <a href="#">Απόρρητο</a>
+    <a href="#">Ανακοινώσεις Νομικού Περιεχομένου</a>
+    <a href="#">Προτιμήσεις cookie</a>
+    <a href="#">Εταιρικά στοιχεία</a>
+    <a href="#">Επικοινωνήστε μαζί μας</a>
+    © 1997-2021 Netflix, Inc. {7df84cd5-c606-41f8-b6ff-566c6afe0f81}</footer>
+</body>
+</html>
