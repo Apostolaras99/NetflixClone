@@ -14,10 +14,10 @@
         "sizes": "512x512"
       }
     ],
-    "start_url": "/NetflixClone",
+    "start_url": "/NetflixClone/",
     "background_color": "#000000",
     "display": "standalone",
-    "scope": "/NetflixClone",
+    "scope": "/NetflixClone/",
     "theme_color": "#000000",
     "description": "NetflixClone"
   }
